@@ -13,5 +13,6 @@ def quickSort(arr, low, high):
 		quickSort(arr, swap, high)
 
 arr = input().split(" ")
+for i in range(len(arr)): arr[i] = int(arr[i]) 
 quickSort(arr, 0, len(arr))
 print(arr)
