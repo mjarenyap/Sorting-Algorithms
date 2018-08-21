@@ -12,13 +12,13 @@ def quickSort(arr, low, high):
 
 		arr[low], arr[swap-1] = arr[swap-1], arr[low]
 
-		print(arr) # comment this for time testing
+		print("Updated array: ", arr) # comment this for time testing
 		quickSort(arr, low, swap-1)
 		quickSort(arr, swap, high)
 
 # main
 # sample input: [64, 34, 25, 12, 22, 11, 90]
-arr = input().split(", ")
+arr = input("Input your dataset: ").split(" ")
 for i in range(len(arr)): arr[i] = int(arr[i]) 
 start_time = time.time()
 quickSort(arr, 0, len(arr))

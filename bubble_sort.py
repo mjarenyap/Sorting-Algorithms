@@ -10,7 +10,7 @@ def sort(arr):
 
 # main
 # sample input: [64, 34, 25, 12, 22, 11, 90]
-arr = input().split(", ")
+arr = input("Input your dataset: ").split(" ")
 for i in range(len(arr)): arr[i] = int(arr[i])
 start_time = time.time()
 sort(arr)
