@@ -46,7 +46,7 @@ def printArray(file, arr, isRandom, numSize):
 	for i in range(0, int(numSize)):
 		if isRandom:
 			arr.append(random.randint(1, 100000))
-		
+
 		file.write(str(arr[i]))
 		if i != int(numSize)-1:
 			file.write(", ")
@@ -62,7 +62,6 @@ def main():
 		resultsArr.append([0, 0, 0])
 
 	numSize = input("Enter the array size: ")
-	# showResults = input("Do you want to see intermediate results? (1 - Yes, 2 - No): ")
 
 	# Open File to write in sortLog
 	file = open("sortLog.txt", "w")
@@ -110,7 +109,7 @@ def main():
 		for j in range(0, 3):
 			file.write("Trial " + str(j+1) + ": " + str(resultsArr[i][j]) + " ms\n")
 		file.write("\n\n")
-		
+
 	file.close()
 	#printArray(file, arr, False, numSize)
 	print("Results are recorded in sortLog.txt")

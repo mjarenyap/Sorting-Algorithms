@@ -26,7 +26,7 @@ def sort(arr, intermediate_results):
 # main
 # sample input: [64, 34, 25, 12, 22, 11, 90]
 arr = input("Input your dataset: ").split(" ")
-for i in range(len(arr)): arr[i] = int(arr[i]) 
+for i in range(len(arr)): arr[i] = int(arr[i])
 intermediate_results = open("counting_intermediate_results.txt", "w")
 intermediate_results.write("Counting Sort Intermediate Results:\n\n")
 
