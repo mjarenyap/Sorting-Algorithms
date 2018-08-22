@@ -1,0 +1,6 @@
+Counting Sort Intermediate Results:
+
+C Array: [0, 1, 1, 1, 1]
+C Array: [0, 1, 2, 3, 4]
+
+B Array (Sorted): [1, 2, 3, 4]
