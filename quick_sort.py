@@ -1,6 +1,6 @@
 import time
 
-def quickSort(arr, low, high):
+def quickSort(arr, low, high, intermediate_results):
 	if low < high:
 		swap = low + 1
 		pivot = arr[low]
@@ -13,16 +13,18 @@ def quickSort(arr, low, high):
 		arr[low], arr[swap-1] = arr[swap-1], arr[low]
 
 		print("Updated array: ", arr) # comment this for time testing
-		quickSort(arr, low, swap-1)
-		quickSort(arr, swap, high)
+		intermediate_results.write("Updated array: " + str(arr) + "\n")
+
+		quickSort(arr, low, swap-1, intermediate_results)
+		quickSort(arr, swap, high, intermediate_results)
 
 # main
 # sample input: [64, 34, 25, 12, 22, 11, 90]
 arr = input("Input your dataset: ").split(" ")
-for i in range(len(arr)): arr[i] = int(arr[i]) 
-start_time = time.time()
-quickSort(arr, 0, len(arr))
-end_time = time.time()
+for i in range(len(arr)): arr[i] = int(arr[i])
+intermediate_results = open("quick_intermediate_results.txt", "w")
+intermediate_results.write("Quick Sort Intermediate Results:\n\n")
 
-print(arr)
-# print("Execution Time: ", end_time - start_time)
+quickSort(arr, 0, len(arr), intermediate_results)
+intermediate_results.write("\nFinal Result: " + str(arr))
+print("\nFinal Result:", arr)

@@ -46,42 +46,73 @@ def printArray(file, arr, isRandom, numSize):
 	for i in range(0, int(numSize)):
 		if isRandom:
 			arr.append(random.randint(1, 100000))
+		
 		file.write(str(arr[i]))
 		if i != int(numSize)-1:
 			file.write(", ")
+
 	file.write("]")
 
 def main():
-	typeSort = input("Enter what type of sort (1 - Bubble Sort, 2 - Quick Sort, 3 - Counting Sort): ")
-	numSize = input("Enter the array size: ")
-	arr = []
-	start_time = end_time = 0
+	# Initialize
+	inputArr = []
+	resultsArr = [] # 0 - Bubble, 1 - Counting, 2 - Quicksort
+	#start_time = end_time = 0
+	for i in range(0, 3):
+		resultsArr.append([0, 0, 0])
 
+	numSize = input("Enter the array size: ")
+	# showResults = input("Do you want to see intermediate results? (1 - Yes, 2 - No): ")
+
+	# Open File to write in sortLog
 	file = open("sortLog.txt", "w")
 	file.write("Input:\n")
 
-	printArray(file, arr, True, numSize)
-
+	# Write in file the input file
+	printArray(file, inputArr, True, numSize)
 	file.write("\n\n")
 
-	if typeSort == str(1):
-		file.write("Bubble Sort - Sorted:\n")
+	# Repeat experiment 3 times
+	for i in range(0, 3):
+
+		# Bubble Sort
+		tempArr = inputArr.copy()
 		start_time = time.time()
-		bubbleSort(arr)
+		bubbleSort(tempArr)
 		end_time = time.time()
-	elif typeSort == str(2):
-		file.write("Quick Sort - Sorted:\n")
+		resultsArr[0][i] = end_time*1000 - start_time*1000
+
+		# Counting Sort
+		tempArr = inputArr.copy()
 		start_time = time.time()
-		quickSort(arr, 0, len(arr))
+		countingSort(tempArr)
 		end_time = time.time()
-	elif typeSort == str(3):
-		file.write("Counting Sort - Sorted:\n")
+		resultsArr[1][i] = end_time*1000 - start_time*1000
+
+		# Quickort
+		tempArr = inputArr.copy()
 		start_time = time.time()
-		countingSort(arr)
+		quickSort(tempArr, 0, len(inputArr))
 		end_time = time.time()
+		resultsArr[2][i] = end_time*1000 - start_time*1000
+
+		# Display sorted array
+		if i == 0:
+			file.write("Sorted:\n")
+			printArray(file, tempArr, False, numSize)
+			file.write("\n\n")
+
+	#print(inputArr)
+	sortNames = ["Bubble Sort", "Counting Sort", "Quicksort"]
+	# Display execution time
+	for i in range(0, 3):
+		file.write(sortNames[i] + "\n")
+		for j in range(0, 3):
+			file.write("Trial " + str(j+1) + ": " + str(resultsArr[i][j]) + " ms\n")
+		file.write("\n\n")
 		
-	printArray(file, arr, False, numSize)
-	file.write("\n\n")
-	file.write("Execution Time:" + str(end_time - start_time))
+	file.close()
+	#printArray(file, arr, False, numSize)
 	print("Results are recorded in sortLog.txt")
+
 main()

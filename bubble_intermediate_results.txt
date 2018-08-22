@@ -1,0 +1,8 @@
+Bubble Sort Intermediate Results:
+
+Iteration 0: [1, 4, 3, 2]
+Iteration 1: [1, 2, 4, 3]
+Iteration 2: [1, 2, 3, 4]
+Iteration 3: [1, 2, 3, 4]
+
+Final result:[1, 2, 3, 4]

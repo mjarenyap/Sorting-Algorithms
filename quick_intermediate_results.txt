@@ -1,0 +1,8 @@
+Quick Sort Intermediate Results:
+
+Updated array: [1, 3, 2, 4]
+Updated array: [1, 3, 2, 4]
+Updated array: [1, 2, 3, 4]
+Updated array: [1, 2, 3, 4]
+
+Final Result: [1, 2, 3, 4]
