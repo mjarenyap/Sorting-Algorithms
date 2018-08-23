@@ -3,9 +3,10 @@ import random
 
 def bubbleSort(arr):
 	for i in range(len(arr)):
-		for j in range(i, len(arr)):
-			if arr[i] > arr[j]:
-				arr[i], arr[j] = arr[j], arr[i]
+		for j in range(1, len(arr)):
+			prev = j-1
+			if(arr[prev] > arr[j]):
+				arr[prev], arr[j] = arr[j], arr[prev]
 
 def quickSort(arr, low, high):
 	if low < high:
